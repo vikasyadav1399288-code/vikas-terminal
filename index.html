@@ -2129,12 +2129,9 @@ async function fetchLiveWire(){
             )
 
             .sort(
-
-                (a,b) =>
-
-                    b.hotScore - a.hotScore
-
-            )
+    (a,b) =>
+        new Date(getTimeValue(b)) - new Date(getTimeValue(a))
+)
 
             .slice(
 
