@@ -5,9 +5,9 @@ from email.utils import parsedate_to_datetime
 import xml.etree.ElementTree as ET
 import json
 import time
+import os
 
-
-PORT = 8000
+PORT = int(os.environ.get("PORT", 8000))
 
 FEEDS = [
     {
@@ -209,7 +209,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 server = ThreadingHTTPServer(
-    ("localhost", PORT),
+    ("0.0.0.0", PORT),
     Handler
 )
 
