@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VIKAS TERMINAL — HOT GEOPOLITICAL WIRE</title>
+
+<style>
+
+/* ================================
+   ROOT
+================================ */
+
+:root{
+    --bg:#050505;
+    --panel:#0b0b0b;
+    --panel2:#101010;
+    --border:#292929;
+
+    --amber:#ffb020;
+    --amber2:#ffcc66;
+
+    --green:#00ff88;
+    --red:#ff4444;
+    --cyan:#00d9ff;
+    --white:#eeeeee;
+    --gray:#888888;
+}
+
+/* ================================
+   BODY
+================================ */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--white);
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    min-height:100vh;
+}
+
+/* ================================
+   TOP BAR
+================================ */
+
+.topbar{
+
+    height:64px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 22px;
+
+    background:#080808;
+
+    border-bottom:1px solid var(--border);
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+}
+
+.brand{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:20px;
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    color:var(--amber);
+}
+
+.brand small{
+
+    color:#666;
+
+    font-size:10px;
+
+    letter-spacing:0;
+}
+
+.status-area{
+
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+}
+
+/* ================================
+   LIVE
+================================ */
+
+.live{
+
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    color:var(--green);
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+.live-dot{
+
+    width:8px;
+    height:8px;
+
+    background:var(--green);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 8px var(--green);
+
+    animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.3;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
+
+/* ================================
+   CLOCK
+================================ */
+
+.clock{
+
+    color:#aaa;
+
+    font-size:12px;
+
+    min-width:190px;
+
+    text-align:right;
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.refresh-btn{
+
+    border:1px solid #555;
+
+    background:#111;
+
+    color:var(--amber);
+
+    padding:8px 13px;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.refresh-btn:hover{
+
+    background:var(--amber);
+
+    color:#000;
+}
+
+/* ================================
+   STATUS
+================================ */
+
+.status-msg{
+
+    padding:10px 22px;
+
+    border-bottom:1px solid #181818;
+
+    color:#777;
+
+    font-size:11px;
+
+    background:#070707;
+}
+
+/* ================================
+   MAIN
+================================ */
+
+.container{
+
+    max-width:1450px;
+
+    margin:auto;
+
+    padding:20px;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+    border-bottom:1px solid var(--border);
+
+    padding-bottom:12px;
+}
+
+.section-title{
+
+    color:var(--amber);
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+}
+
+.section-info{
+
+    color:#666;
+
+    font-size:11px;
+}
+
+/* ================================
+   CRAWLER
+================================ */
+
+.crawler{
+
+    background:#090909;
+
+    border:1px solid var(--border);
+
+    padding:9px 12px;
+
+    margin-bottom:15px;
+
+    color:var(--amber2);
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    font-size:11px;
+}
+
+/* ================================
+   NEWS LIST
+================================ */
+
+#wireList{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+/* ================================
+   NEWS CARD
+================================ */
+
+.news-card{
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    padding:15px;
+
+    transition:.2s;
+
+    position:relative;
+}
+
+.news-card:hover{
+
+    border-color:#555;
+
+    background:#0e0e0e;
+}
+
+/* ================================
+   TOP
+================================ */
+
+.news-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:8px;
+}
+
+.hot-level{
+
+    color:var(--red);
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+}
+
+.score{
+
+    color:var(--amber);
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+/* ================================
+   TITLE
+================================ */
+
+.news-card h2{
+
+    margin:5px 0 12px;
+
+    font-size:16px;
+
+    line-height:1.45;
+
+    color:#f2f2f2;
+
+    font-weight:600;
+}
+
+/* ================================
+   META
+================================ */
+
+.news-meta{
+
+    display:flex;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+    color:#777;
+
+    font-size:11px;
+
+    padding-bottom:12px;
+
+    border-bottom:1px solid #202020;
+}
+
+/* ================================
+   MARKET TAG
+================================ */
+
+.market-tag{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:4px 8px;
+
+    border:1px solid #444;
+
+    color:var(--cyan);
+
+    font-size:10px;
+
+    font-weight:bold;
+}
+
+/* ================================
+   IMPACT
+================================ */
+
+.trade-impact{
+
+    margin-top:12px;
+
+    padding:12px;
+
+    background:#080808;
+
+    border:1px solid #222;
+}
+
+.impact-row{
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:center;
+
+    margin:5px 0;
+
+    font-size:12px;
+}
+
+.impact-row strong{
+
+    color:#777;
+
+    min-width:65px;
+}
+
+.buy{
+
+    color:var(--green);
+
+    font-weight:800;
+}
+
+.sell{
+
+    color:var(--red);
+
+    font-weight:800;
+}
+
+.neutral{
+
+    color:var(--amber);
+
+    font-weight:800;
+}
+
+.pairs{
+
+    color:var(--cyan);
+
+    font-weight:bold;
+}
+
+.impact-reason{
+
+    margin-top:9px;
+
+    padding-top:8px;
+
+    border-top:1px solid #1d1d1d;
+
+    color:#999;
+
+    font-size:11px;
+
+    line-height:1.6;
+}
+
+/* ================================
+   SOURCE
+================================ */
+
+.source-link{
+
+    display:inline-block;
+
+    margin-top:12px;
+
+    color:var(--cyan);
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    border:1px solid #333;
+
+    padding:6px 9px;
+}
+
+.source-link:hover{
+
+    background:var(--cyan);
+
+    color:#000;
+}
+
+/* ================================
+   EMPTY
+================================ */
+
+.empty{
+
+    text-align:center;
+
+    padding:50px;
+
+    border:1px dashed #333;
+
+    color:#666;
+
+    font-size:12px;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer{
+
+    margin-top:20px;
+
+    padding:15px 0;
+
+    border-top:1px solid var(--border);
+
+    color:#555;
+
+    font-size:10px;
+
+    line-height:1.6;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:700px){
+
+    .topbar{
+
+        height:auto;
+
+        padding:12px;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+    }
+
+    .status-area{
+
+        width:100%;
+
+        justify-content:space-between;
+
+        flex-wrap:wrap;
+    }
+
+    .clock{
+
+        min-width:auto;
+
+        text-align:left;
+    }
+
+    .container{
+
+        padding:12px;
+    }
+
+    .section-header{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+        gap:6px;
+    }
+
+    .news-card h2{
+
+        font-size:14px;
+    }
+
+}
+
+/* ================================
+   LOADING
+================================ */
+
+.loading{
+
+    color:var(--amber);
+
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:.3;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     TOP BAR
+========================================== -->
+
+<header class="topbar">
+
+    <div class="brand">
+
+        VIKAS TERMINAL
+
+        <small>
+            / GEOPOLITICAL WIRE
+        </small>
+
+    </div>
+
+
+    <div class="status-area">
+
+        <div class="live">
+
+            <span
+                class="live-dot"
+                id="liveDot">
+            </span>
+
+            <span id="liveText">
+                CONNECTING
+            </span>
+
+        </div>
+
+
+        <div
+            class="clock"
+            id="clock">
+            --/--/---- --:--:-- IST
+        </div>
+
+
+        <button
+            class="refresh-btn"
+            onclick="refreshWire()">
+
+            REFRESH
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ==========================================
+     STATUS
+========================================== -->
+
+<div
+    class="status-msg"
+    id="statusMsg">
+
+    Connecting to live news server...
+
+</div>
+
+
+<!-- ==========================================
+     MAIN
+========================================== -->
+
+<main class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="section-header">
+
+        <div class="section-title">
+
+            🔥 HOT TOPICS
+
+            · XAU/USD
+            · CRUDE OIL
+            · NAT GAS
+            · GEOPOLITICS
+
+        </div>
+
+
+        <div
+            class="section-info"
+            id="sourceLabel">
+
+            LIVE WIRE
+
+        </div>
+
+    </div>
+
+
+    <!-- CRAWLER -->
+
+    <div class="crawler">
+
+        ⚡ MONITORING:
+        GOLD · CRUDE · OIL · NAT GAS ·
+        FED · USD · IRAN · ISRAEL ·
+        RUSSIA · UKRAINE · OPEC ·
+        HORMUZ · GEOPOLITICAL SHOCKS
+
+    </div>
+
+
+    <!-- NEWS -->
+
+    <section id="wireList">
+
+        <div class="empty loading">
+
+            CONNECTING TO LIVE NEWS...
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        VIKAS TERMINAL · NEWS IS FILTERED FOR
+        MARKET-MOVING EVENTS ONLY ·
+        TIME DISPLAYED IN INDIA STANDARD TIME (IST)
+
+        <br><br>
+
+        ⚠ BUY / SELL BIAS IS A
+        HEADLINE-BASED HEURISTIC,
+        NOT FINANCIAL ADVICE.
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* ==========================================================
+   VIKAS TERMINAL
+   HOT GEOPOLITICAL NEWS ENGINE
+========================================================== */
+
+
+/* ==========================================================
+   SETTINGS
+========================================================== */
+
+const API_URL = "/api/news";
+
+const HOT_NEWS_LIMIT = 15;
+
+const HOT_THRESHOLD = 55;
+
+
+/* ==========================================================
+   HOT KEYWORDS
+========================================================== */
+
+const HOT_KEYWORDS = {
+
+    /* GEOPOLITICAL */
+
+    geopolitical: [
+
+        "war",
+        "attack",
+        "missile",
+        "strike",
+        "airstrike",
+        "military",
+        "invasion",
+        "conflict",
+        "escalation",
+        "escalate",
+        "troops",
+        "drone",
+        "bomb",
+        "explosion",
+        "ceasefire",
+        "peace",
+        "retaliation",
+        "defense",
+        "defence"
+
+    ],
+
+
+    /* MIDDLE EAST */
+
+    mideast: [
+
+        "iran",
+        "israel",
+        "gaza",
+        "hamas",
+        "hezbollah",
+        "lebanon",
+        "syria",
+        "iraq",
+        "yemen",
+        "houthi",
+        "red sea",
+        "hormuz",
+        "middle east"
+
+    ],
+
+
+    /* RUSSIA UKRAINE */
+
+    russia: [
+
+        "russia",
+        "ukraine",
+        "putin",
+        "zelensky",
+        "moscow",
+        "kyiv",
+        "nato"
+
+    ],
+
+
+    /* OIL */
+
+    oil: [
+
+        "oil",
+        "crude",
+        "opec",
+        "opec+",
+        "brent",
+        "wti",
+        "tanker",
+        "pipeline",
+        "oil supply",
+        "production cut",
+        "production increase",
+        "oil prices",
+        "energy crisis"
+
+    ],
+
+
+    /* GOLD */
+
+    gold: [
+
+        "gold",
+        "bullion",
+        "precious metal",
+        "safe haven",
+        "safe-haven"
+
+    ],
+
+
+    /* FED / USD */
+
+    usd: [
+
+        "fed",
+        "federal reserve",
+        "interest rate",
+        "rate cut",
+        "rate hike",
+        "inflation",
+        "cpi",
+        "ppi",
+        "jobs",
+        "payroll",
+        "nonfarm",
+        "unemployment",
+        "gdp",
+        "dollar",
+        "usd",
+        "treasury",
+        "yield"
+
+    ],
+
+
+    /* TRADE */
+
+    trade: [
+
+        "tariff",
+        "trade war",
+        "sanction",
+        "sanctions",
+        "export ban",
+        "import ban",
+        "embargo"
+
+    ]
+
+};
+
+
+/* ==========================================================
+   DOM ELEMENTS
+========================================================== */
+
+const wireList =
+    document.getElementById("wireList");
+
+const statusMsg =
+    document.getElementById("statusMsg");
+
+const liveText =
+    document.getElementById("liveText");
+
+const liveDot =
+    document.getElementById("liveDot");
+
+const clock =
+    document.getElementById("clock");
+
+const sourceLabel =
+    document.getElementById("sourceLabel");
+
+
+/* ==========================================================
+   ESCAPE HTML
+========================================================== */
+
+function escapeHTML(value){
+
+    if(value === null || value === undefined){
+
+        return "";
+
+    }
+
+    return String(value)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+}
+
+
+/* ==========================================================
+   IST DATE + TIME
+========================================================== */
+
+function formatIST(dateString){
+
+    const d = new Date(dateString);
+
+
+    if(isNaN(d.getTime())){
+
+        return {
+
+            date:"N/A",
+
+            time:"N/A"
+
+        };
+
+    }
+
+
+    const date =
+        new Intl.DateTimeFormat(
+
+            "en-IN",
+
+            {
+
+                timeZone:"Asia/Kolkata",
+
+                day:"2-digit",
+
+                month:"2-digit",
+
+                year:"numeric"
+
+            }
+
+        ).format(d);
+
+
+    const time =
+        new Intl.DateTimeFormat(
+
+            "en-IN",
+
+            {
+
+                timeZone:"Asia/Kolkata",
+
+                hour:"2-digit",
+
+                minute:"2-digit",
+
+                second:"2-digit",
+
+                hour12:false
+
+            }
+
+        ).format(d);
+
+
+    return {
+
+        date:date,
+
+        time:time + " IST"
+
+    };
+
+}
+
+
+/* ==========================================================
+   GET DATE VALUE
+========================================================== */
+
+function getTimeValue(item){
+
+    return (
+
+        item.pubDate ||
+
+        item.published ||
+
+        item.publishedAt ||
+
+        item.date ||
+
+        item.datetime ||
+
+        item.time ||
+
+        new Date().toISOString()
+
+    );
+
+}
+
+
+/* ==========================================================
+   HOT SCORE
+========================================================== */
+
+function calculateHotScore(title){
+
+    const t =
+        String(title || "").toLowerCase();
+
+
+    let score = 0;
+
+
+    /* GEOPOLITICAL */
+
+    HOT_KEYWORDS.geopolitical.forEach(word => {
+
+        if(t.includes(word)){
+
+            score += 20;
+
+        }
+
+    });
+
+
+    /* MIDDLE EAST */
+
+    HOT_KEYWORDS.mideast.forEach(word => {
+
+        if(t.includes(word)){
+
+            score += 15;
+
+        }
+
+    });
+
+
+    /* RUSSIA */
+
+    HOT_KEYWORDS.russia.forEach(word => {
+
+        if(t.includes(word)){
+
+            score += 15;
+
+        }
+
+    });
+
+
+    /* OIL */
+
+    HOT_KEYWORDS.oil.forEach(word => {
+
+        if(t.includes(word)){
+
+            score += 12;
+
+        }
+
+    });
+
+
+    /* GOLD */
+
+    HOT_KEYWORDS.gold.forEach(word => {
+
+        if(t.includes(word)){
+
+            score += 12;
+
+        }
+
+    });
+
+
+    /* USD */
+
+    HOT_KEYWORDS.usd.forEach(word => {
+
+        if(t.includes(word)){
+
+            score += 10;
+
+        }
+
+    });
+
+
+    /* TRADE */
+
+    HOT_KEYWORDS.trade.forEach(word => {
+
+        if(t.includes(word)){
+
+            score += 10;
+
+        }
+
+    });
+
+
+    /* IMPORTANT SHOCK WORDS */
+
+    if(
+
+        t.includes("breaking") ||
+
+        t.includes("urgent") ||
+
+        t.includes("major") ||
+
+        t.includes("emergency")
+
+    ){
+
+        score += 25;
+
+    }
+
+
+    /* LIMIT */
+
+    return Math.min(score,100);
+
+}
+
+
+/* ==========================================================
+   HOT LEVEL
+========================================================== */
+
+function getHotLevel(score){
+
+    if(score >= 90){
+
+        return "🔥 EXTREME";
+
+    }
+
+    if(score >= 75){
+
+        return "🔥 VERY HOT";
+
+    }
+
+    if(score >= 60){
+
+        return "⚠ HOT";
+
+    }
+
+    return "WATCH";
+
+}
+
+
+/* ==========================================================
+   CLASSIFY MARKET
+========================================================== */
+
+function classify(title){
+
+    const t =
+        String(title || "").toLowerCase();
+
+
+    if(
+
+        t.includes("gold") ||
+
+        t.includes("bullion") ||
+
+        t.includes("safe haven")
+
+    ){
+
+        return "GOLD";
+
+    }
+
+
+    if(
+
+        t.includes("oil") ||
+
+        t.includes("crude") ||
+
+        t.includes("opec") ||
+
+        t.includes("brent") ||
+
+        t.includes("wti") ||
+
+        t.includes("tanker") ||
+
+        t.includes("hormuz")
+
+    ){
+
+        return "CRUDE OIL";
+
+    }
+
+
+    if(
+
+        t.includes("natural gas") ||
+
+        t.includes("natgas") ||
+
+        t.includes("lng")
+
+    ){
+
+        return "NAT GAS";
+
+    }
+
+
+    if(
+
+        t.includes("iran") ||
+
+        t.includes("israel") ||
+
+        t.includes("gaza") ||
+
+        t.includes("hamas") ||
+
+        t.includes("hezbollah") ||
+
+        t.includes("russia") ||
+
+        t.includes("ukraine") ||
+
+        t.includes("war") ||
+
+        t.includes("missile") ||
+
+        t.includes("attack")
+
+    ){
+
+        return "GEOPOLITICS";
+
+    }
+
+
+    if(
+
+        t.includes("fed") ||
+
+        t.includes("inflation") ||
+
+        t.includes("cpi") ||
+
+        t.includes("ppi") ||
+
+        t.includes("jobs") ||
+
+        t.includes("gdp") ||
+
+        t.includes("interest rate")
+
+    ){
+
+        return "US MACRO";
+
+    }
+
+
+    return "MARKETS";
+
+}
+
+
+/* ==========================================================
+   TRADE IMPACT
+========================================================== */
+
+function getTradeImpact(title){
+
+    const t =
+        String(title || "").toLowerCase();
+
+
+    let pairs = [];
+
+    let bias = "NEUTRAL";
+
+    let reasons = [];
+
+
+    /* ======================================================
+       GOLD / SAFE HAVEN
+    ====================================================== */
+
+    if(
+
+        t.includes("gold") ||
+
+        t.includes("xau") ||
+
+        t.includes("safe haven") ||
+
+        t.includes("safe-haven") ||
+
+        t.includes("geopolitical") ||
+
+        t.includes("war") ||
+
+        t.includes("attack") ||
+
+        t.includes("missile") ||
+
+        t.includes("iran") ||
+
+        t.includes("israel") ||
+
+        t.includes("russia") ||
+
+        t.includes("ukraine")
+
+    ){
+
+        pairs.push("XAUUSD");
+
+
+        /* GOLD BUY */
+
+        if(
+
+            t.includes("attack") ||
+
+            t.includes("war") ||
+
+            t.includes("missile") ||
+
+            t.includes("escalat") ||
+
+            t.includes("iran") ||
+
+            t.includes("israel") ||
+
+            t.includes("retaliation") ||
+
+            t.includes("military")
+
+        ){
+
+            bias = "BUY";
+
+            reasons.push(
+
+                "Geopolitical risk may increase safe-haven demand for gold."
+
+            );
+
+        }
+
+
+        /* GOLD SELL */
+
+        if(
+
+            t.includes("ceasefire") ||
+
+            t.includes("peace") ||
+
+            t.includes("de-escalat")
+
+        ){
+
+            bias = "SELL";
+
+            reasons.push(
+
+                "De-escalation may reduce safe-haven demand."
+
+            );
+
+        }
+
+    }
+
+
+    /* ======================================================
+       CRUDE OIL
+    ====================================================== */
+
+    if(
+
+        t.includes("oil") ||
+
+        t.includes("crude") ||
+
+        t.includes("opec") ||
+
+        t.includes("brent") ||
+
+        t.includes("wti") ||
+
+        t.includes("hormuz") ||
+
+        t.includes("tanker") ||
+
+        t.includes("pipeline") ||
+
+        t.includes("production")
+
+    ){
+
+        pairs.push("XTIUSD");
+
+        pairs.push("XBRUSD");
+
+        pairs.push("USDCAD");
+
+
+        /* OIL BUY */
+
+        if(
+
+            t.includes("attack") ||
+
+            t.includes("tanker") ||
+
+            t.includes("hormuz") ||
+
+            t.includes("supply disruption") ||
+
+            t.includes("opec cut") ||
+
+            t.includes("production cut") ||
+
+            t.includes("pipeline attack")
+
+        ){
+
+            bias = "BUY";
+
+            reasons.push(
+
+                "Supply disruption risk may support crude oil prices."
+
+            );
+
+        }
+
+
+        /* OIL SELL */
+
+        if(
+
+            t.includes("production increase") ||
+
+            t.includes("output increase") ||
+
+            t.includes("oil falls") ||
+
+            t.includes("oil prices fall") ||
+
+            t.includes("supply increase")
+
+        ){
+
+            bias = "SELL";
+
+            reasons.push(
+
+                "Higher supply or weaker oil demand may pressure crude."
+
+            );
+
+        }
+
+    }
+
+
+    /* ======================================================
+       USD MACRO
+    ====================================================== */
+
+    if(
+
+        t.includes("fed") ||
+
+        t.includes("federal reserve") ||
+
+        t.includes("interest rate") ||
+
+        t.includes("rate cut") ||
+
+        t.includes("rate hike") ||
+
+        t.includes("inflation") ||
+
+        t.includes("cpi") ||
+
+        t.includes("ppi") ||
+
+        t.includes("jobs") ||
+
+        t.includes("payroll") ||
+
+        t.includes("nonfarm") ||
+
+        t.includes("unemployment") ||
+
+        t.includes("gdp") ||
+
+        t.includes("dollar") ||
+
+        t.includes("usd") ||
+
+        t.includes("treasury") ||
+
+        t.includes("yield")
+
+    ){
+
+        pairs.push("EURUSD");
+
+        pairs.push("GBPUSD");
+
+        pairs.push("USDJPY");
+
+        pairs.push("XAUUSD");
+
+
+        reasons.push(
+
+            "USD macro news can affect major FX pairs and gold."
+
+        );
+
+    }
+
+
+    /* ======================================================
+       DEDUPLICATE
+    ====================================================== */
+
+    pairs = [...new Set(pairs)];
+
+
+    /* ======================================================
+       DEFAULT
+    ====================================================== */
+
+    if(pairs.length === 0){
+
+        pairs.push("MARKET");
+
+    }
+
+
+    if(reasons.length === 0){
+
+        reasons.push(
+
+            "Headline requires price-action and broader market confirmation."
+
+        );
+
+    }
+
+
+    return {
+
+        pairs:pairs,
+
+        bias:bias,
+
+        reasons:reasons
+
+    };
+
+}
+
+
+/* ==========================================================
+   STATUS
+========================================================== */
+
+function setStatus(message){
+
+    statusMsg.textContent = message;
+
+}
+
+
+/* ==========================================================
+   LIVE STATUS
+========================================================== */
+
+function setLive(isLive){
+
+    if(isLive){
+
+        liveText.textContent = "LIVE";
+
+        liveText.style.color = "#00ff88";
+
+        liveDot.style.background = "#00ff88";
+
+    }
+
+    else{
+
+        liveText.textContent = "OFFLINE";
+
+        liveText.style.color = "#ff4444";
+
+        liveDot.style.background = "#ff4444";
+
+    }
+
+}
+
+
+/* ==========================================================
+   RENDER NEWS
+========================================================== */
+
+function renderWire(items){
+
+    wireList.innerHTML = "";
+
+
+    if(!items || items.length === 0){
+
+        wireList.innerHTML = `
+
+            <div class="empty">
+
+                NO HOT NEWS FOUND
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    items.forEach(item => {
+
+
+        const title =
+            item.title ||
+            item.headline ||
+            "Untitled News";
+
+
+        const score =
+            item.hotScore !== undefined
+            ? item.hotScore
+            : calculateHotScore(title);
+
+
+        const level =
+            item.hotLevel ||
+            getHotLevel(score);
+
+
+        const dt =
+            formatIST(getTimeValue(item));
+
+
+        const source =
+            item.source ||
+            item.sourceName ||
+            item.publisher ||
+            "UNKNOWN";
+
+
+        const market =
+            classify(title);
+
+
+        const impact =
+            getTradeImpact(title);
+
+
+        const biasClass =
+
+            impact.bias === "BUY"
+
+            ? "buy"
+
+            : impact.bias === "SELL"
+
+            ? "sell"
+
+            : "neutral";
+
+
+        const reasonsHTML =
+
+            impact.reasons
+
+                .map(reason =>
+
+                    `<div>• ${escapeHTML(reason)}</div>`
+
+                )
+
+                .join("");
+
+
+        const link =
+            item.link ||
+            item.url ||
+            "#";
+
+
+        wireList.innerHTML += `
+
+        <article class="news-card">
+
+
+            <!-- TOP -->
+
+            <div class="news-top">
+
+                <span class="hot-level">
+
+                    ${escapeHTML(level)}
+
+                </span>
+
+
+                <span class="score">
+
+                    HOT ${score}
+
+                </span>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h2>
+
+                ${escapeHTML(title)}
+
+            </h2>
+
+
+            <!-- META -->
+
+            <div class="news-meta">
+
+                <span>
+
+                    📅 ${escapeHTML(dt.date)}
+
+                </span>
+
+
+                <span>
+
+                    🕒 ${escapeHTML(dt.time)}
+
+                </span>
+
+
+                <span>
+
+                    📰 ${escapeHTML(source)}
+
+                </span>
+
+            </div>
+
+
+            <!-- MARKET -->
+
+            <div>
+
+                <span class="market-tag">
+
+                    ${escapeHTML(market)}
+
+                </span>
+
+            </div>
+
+
+            <!-- IMPACT -->
+
+            <div class="trade-impact">
+
+
+                <div class="impact-row">
+
+                    <strong>
+
+                        BIAS
+
+                    </strong>
+
+
+                    <span class="${biasClass}">
+
+                        ${escapeHTML(impact.bias)}
+
+                    </span>
+
+                </div>
+
+
+                <div class="impact-row">
+
+                    <strong>
+
+                        PAIR
+
+                    </strong>
+
+
+                    <span class="pairs">
+
+                        ${impact.pairs
+                            .map(p => escapeHTML(p))
+                            .join(" / ")}
+
+                    </span>
+
+                </div>
+
+
+                <div class="impact-reason">
+
+                    ${reasonsHTML}
+
+                </div>
+
+
+            </div>
+
+
+            <!-- SOURCE LINK -->
+
+            ${
+                link !== "#"
+
+                ? `
+
+                <a
+
+                    href="${escapeHTML(link)}"
+
+                    target="_blank"
+
+                    rel="noopener noreferrer"
+
+                    class="source-link"
+
+                >
+
+                    OPEN SOURCE →
+
+                </a>
+
+                `
+
+                : ""
+
+            }
+
+
+        </article>
+
+        `;
+
+    });
+
+}
+
+
+/* ==========================================================
+   FETCH LIVE NEWS
+========================================================== */
+
+async function fetchLiveWire(){
+
+    try{
+
+
+        setStatus(
+
+            "Fetching latest hot market-moving news..."
+
+        );
+
+
+        wireList.innerHTML = `
+
+            <div class="empty loading">
+
+                FETCHING LIVE NEWS...
+
+            </div>
+
+        `;
+
+
+        const response =
+
+            await fetch(
+
+                API_URL,
+
+                {
+
+                    cache:"no-store"
+
+                }
+
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+
+                "HTTP " + response.status
+
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        /* =========================================
+           HANDLE API FORMAT
+        ========================================= */
+
+        let rawItems = [];
+
+
+        if(Array.isArray(data)){
+
+            rawItems = data;
+
+        }
+
+        else if(Array.isArray(data.news)){
+
+            rawItems = data.news;
+
+        }
+
+        else if(Array.isArray(data.items)){
+
+            rawItems = data.items;
+
+        }
+
+        else if(Array.isArray(data.articles)){
+
+            rawItems = data.articles;
+
+        }
+
+
+        /* =========================================
+           SCORE NEWS
+        ========================================= */
+
+        const scored = rawItems
+
+            .map(item => {
+
+                const title =
+
+                    item.title ||
+
+                    item.headline ||
+
+                    "";
+
+
+                const score =
+
+                    calculateHotScore(title);
+
+
+                return {
+
+                    ...item,
+
+                    hotScore:score,
+
+                    hotLevel:getHotLevel(score)
+
+                };
+
+            });
+
+
+        /* =========================================
+           ONLY HOT NEWS
+        ========================================= */
+
+        const hotNews = scored
+
+            .filter(
+
+                item =>
+
+                    item.hotScore >= HOT_THRESHOLD
+
+            )
+
+            .sort(
+
+                (a,b) =>
+
+                    b.hotScore - a.hotScore
+
+            )
+
+            .slice(
+
+                0,
+
+                HOT_NEWS_LIMIT
+
+            );
+
+
+        /* =========================================
+           IF NO HOT NEWS
+        ========================================= */
+
+        if(hotNews.length === 0){
+
+            wireList.innerHTML = `
+
+                <div class="empty">
+
+                    NO HIGH-IMPACT NEWS DETECTED
+
+                    <br><br>
+
+                    MARKET IS QUIET
+
+                </div>
+
+            `;
+
+            setStatus(
+
+                "Live connection active · No major hot-topic event detected."
+
+            );
+
+        }
+
+        else{
+
+            renderWire(hotNews);
+
+
+            setStatus(
+
+                `LIVE · ${hotNews.length} HOT EVENTS DETECTED`
+
+            );
+
+        }
+
+
+        setLive(true);
+
+
+        sourceLabel.textContent =
+
+            "LIVE API · " +
+
+            rawItems.length +
+
+            " ITEMS";
+
+
+    }
+
+    catch(error){
+
+        console.error(
+
+            "NEWS ERROR:",
+
+            error
+
+        );
+
+
+        setLive(false);
+
+
+        setStatus(
+
+            "News API connection failed · Check Python server."
+
+        );
+
+
+        wireList.innerHTML = `
+
+            <div class="empty">
+
+                NEWS SERVER CONNECTION FAILED
+
+                <br><br>
+
+                Make sure Python server is running:
+
+                <br><br>
+
+                http://localhost:8000
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* ==========================================================
+   MANUAL REFRESH
+========================================================== */
+
+function refreshWire(){
+
+    fetchLiveWire();
+
+}
+
+
+/* ==========================================================
+   CLOCK
+========================================================== */
+
+function updateClock(){
+
+    const now = new Date();
+
+
+    const date =
+
+        new Intl.DateTimeFormat(
+
+            "en-IN",
+
+            {
+
+                timeZone:"Asia/Kolkata",
+
+                day:"2-digit",
+
+                month:"2-digit",
+
+                year:"numeric"
+
+            }
+
+        ).format(now);
+
+
+    const time =
+
+        new Intl.DateTimeFormat(
+
+            "en-IN",
+
+            {
+
+                timeZone:"Asia/Kolkata",
+
+                hour:"2-digit",
+
+                minute:"2-digit",
+
+                second:"2-digit",
+
+                hour12:false
+
+            }
+
+        ).format(now);
+
+
+    clock.textContent =
+
+        `${date} ${time} IST`;
+
+}
+
+
+/* ==========================================================
+   START CLOCK
+========================================================== */
+
+setInterval(
+
+    updateClock,
+
+    1000
+
+);
+
+updateClock();
+
+
+/* ==========================================================
+   AUTO REFRESH
+   EVERY 2 MINUTES
+========================================================== */
+
+setInterval(
+
+    fetchLiveWire,
+
+    120000
+
+);
+
+
+/* ==========================================================
+   START APP
+========================================================== */
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    function(){
+
+        fetchLiveWire();
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>
