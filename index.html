@@ -2633,29 +2633,7 @@ const fedData = fedResponse.ok
            UPDATE XAUUSD THESIS
         ========================================= */
 
-       
-
-try {
-    const controller = new AbortController();
-
-    const timeout = setTimeout(() => {
-        controller.abort();
-    }, 5000);
-
-    const fedResponse = await fetch("/api/fed", {
-        cache: "no-store",
-        signal: controller.signal
-    });
-
-    clearTimeout(timeout);
-
-    if (fedResponse.ok) {
-        fedData = await fedResponse.json();
-    }
-
-} catch (error) {
-    console.warn("FRED unavailable:", error);
-}
+      
 
 updateGoldThesis(rawItems, fedData);
 
