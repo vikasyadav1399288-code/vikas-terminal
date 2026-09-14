@@ -2633,6 +2633,14 @@ const fedData = fedResponse.ok
            UPDATE XAUUSD THESIS
         ========================================= */
 
+       const fedResponse = await fetch("/api/fed", {
+    cache: "no-store"
+});
+
+const fedData = fedResponse.ok
+    ? await fedResponse.json()
+    : null;
+
         updateGoldThesis(rawItems, fedData);
 
         /* =========================================
