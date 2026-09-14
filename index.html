@@ -2390,9 +2390,9 @@ function driverClass(label){
     return "thesis-neutral";
 }
 
-function updateGoldThesis(items){
+function updateGoldThesis(items, fedData = null){
 
-    const signal = getThesisSignal(items);
+    const signal = getThesisSignal(items, fedData);
 
     const now = new Date();
 
