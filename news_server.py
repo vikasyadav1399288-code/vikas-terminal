@@ -209,7 +209,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 server = ThreadingHTTPServer(
-    ("localhost", PORT),
+    ("0.0.0.0", PORT),
     Handler
 )
 
