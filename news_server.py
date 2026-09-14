@@ -5,9 +5,11 @@ from email.utils import parsedate_to_datetime
 import xml.etree.ElementTree as ET
 import json
 import time
+import os
 
 
 PORT = 8000
+FRED_API_KEY = os.getenv("FRED_API_KEY")
 
 FEEDS = [
     {
@@ -165,6 +167,56 @@ class Handler(SimpleHTTPRequestHandler):
 
 
     def do_GET(self):
+        path = urlparse(self.path).path
+
+        
+        if path == "/api/fed":
+
+            
+            try:
+                if not FRED_API_KEY:
+                    self.send_json({
+                        "status": "error",
+                        "message": "FRED_API_KEY not configured"
+                    }, 500)
+                    return
+
+                url = (
+                    "https://api.stlouisfed.org/fred/series/observations"
+                    "?series_id=DFF"
+                    "&file_type=json"
+                    "&api_key=" + FRED_API_KEY
+                )
+
+                request = Request(
+                    url,
+                    headers={"User-Agent": "VIKAS-TERMINAL"}
+                )
+
+                with urlopen(request, timeout=10) as response:
+                    data = json.loads(response.read().decode("utf-8"))
+
+                observations = data.get("observations", [])
+
+                latest = None
+                for observation in reversed(observations):
+                    if observation.get("value") not in ("", None):
+                        latest = observation
+                        break
+
+                self.send_json({
+                    "status": "ok",
+                    "series": "DFF",
+                    "latest": latest
+                })
+
+            except Exception as error:
+                self.send_json({
+                    "status": "error",
+                    "message": str(error)
+                }, 500)
+
+            return
 
         path = urlparse(self.path).path
 
