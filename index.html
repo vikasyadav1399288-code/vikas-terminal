@@ -2887,17 +2887,58 @@ updateClock();
 
 
 /* ==========================================================
-   AUTO REFRESH
+   CONTINUOUS AUTO REFRESH
    EVERY 2 MINUTES
 ========================================================== */
 
-setInterval(
+const AUTO_REFRESH_MS = 120000;
 
-    window.fetchLiveWire,
+let autoRefreshTimer = null;
 
-    120000
+function startAutoRefresh(){
 
-);
+    if(autoRefreshTimer){
+        clearTimeout(autoRefreshTimer);
+    }
+
+    autoRefreshTimer = setTimeout(async function(){
+
+        console.log("[AUTO] 2-minute refresh started");
+
+        try{
+            await window.fetchLiveWire();
+        }
+        catch(error){
+            console.error("[AUTO] Refresh error:", error);
+        }
+
+        startAutoRefresh();
+
+    }, AUTO_REFRESH_MS);
+}
+
+
+/* ==========================================================
+   REFRESH WHEN TAB BECOMES ACTIVE
+========================================================== */
+
+document.addEventListener("visibilitychange", function(){
+
+    if(!document.hidden){
+
+        console.log("[AUTO] Tab active — refreshing now");
+
+        window.fetchLiveWire();
+
+        startAutoRefresh();
+    }
+
+});
+
+
+/* START CONTINUOUS LOOP */
+
+startAutoRefresh();
 
 
 /* ==========================================================
