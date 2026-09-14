@@ -561,6 +561,155 @@ body{
     line-height:1.6;
 }
 
+
+/* ================================
+   XAUUSD GOLD THESIS
+   ================================ */
+
+.thesis-panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    margin-bottom:15px;
+    padding:16px;
+}
+
+.thesis-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--border);
+}
+
+.thesis-title{
+    color:var(--amber);
+    font-size:15px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.thesis-date{
+    color:#777;
+    font-size:11px;
+}
+
+.thesis-summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:12px 0;
+}
+
+.thesis-stat{
+    background:#080808;
+    border:1px solid #222;
+    padding:10px;
+}
+
+.thesis-label{
+    color:#666;
+    font-size:10px;
+    margin-bottom:5px;
+}
+
+.thesis-value{
+    font-size:14px;
+    font-weight:800;
+}
+
+.thesis-bearish{color:var(--red)}
+.thesis-bullish{color:var(--green)}
+.thesis-neutral{color:var(--amber)}
+
+.thesis-section{
+    margin-top:13px;
+}
+
+.thesis-section-title{
+    color:#777;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1px;
+    margin-bottom:7px;
+}
+
+.thesis-text{
+    color:#aaa;
+    font-size:11px;
+    line-height:1.65;
+}
+
+.driver-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:7px;
+}
+
+.driver{
+    background:#080808;
+    border:1px solid #222;
+    padding:8px;
+    font-size:10px;
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+}
+
+.driver-name{color:#aaa}
+.driver-bias{font-weight:bold}
+
+.thesis-plan{
+    background:#080808;
+    border:1px solid #222;
+    padding:10px;
+    font-size:11px;
+    line-height:1.7;
+}
+
+.thesis-history{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.thesis-history-row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:6px 8px;
+    background:#080808;
+    border-left:2px solid #333;
+    color:#777;
+    font-size:10px;
+}
+
+.thesis-history-row strong{
+    color:#aaa;
+}
+
+.thesis-source{
+    color:#555;
+    font-size:10px;
+    margin-top:10px;
+}
+
+.thesis-source span{
+    color:var(--cyan);
+}
+
+@media(max-width:700px){
+    .thesis-summary,
+    .driver-grid{
+        grid-template-columns:1fr;
+    }
+
+    .thesis-head{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+}
+
 /* ================================
    MOBILE
 ================================ */
@@ -755,6 +904,74 @@ body{
 
     </div>
 
+
+
+<!-- ==========================================
+     XAUUSD GOLD THESIS
+========================================== -->
+
+<section class="thesis-panel" id="goldThesis">
+
+    <div class="thesis-head">
+        <div class="thesis-title">XAUUSD — GOLD THESIS</div>
+        <div class="thesis-date" id="thesisDate">-- SEP ----</div>
+    </div>
+
+    <div class="thesis-summary">
+        <div class="thesis-stat">
+            <div class="thesis-label">FUNDAMENTAL BIAS</div>
+            <div class="thesis-value thesis-neutral" id="thesisBias">⚪ NEUTRAL</div>
+        </div>
+
+        <div class="thesis-stat">
+            <div class="thesis-label">CONFIDENCE</div>
+            <div class="thesis-value" id="thesisConfidence">50%</div>
+        </div>
+    </div>
+
+    <div class="thesis-section">
+        <div class="thesis-section-title">THESIS</div>
+        <div class="thesis-text" id="thesisText">
+            Waiting for live market-moving headlines...
+        </div>
+    </div>
+
+    <div class="thesis-section">
+        <div class="thesis-section-title">KEY DRIVERS</div>
+        <div class="driver-grid" id="thesisDrivers">
+            <div class="driver"><span class="driver-name">USD / Yields</span><span class="driver-bias thesis-neutral">NEUTRAL</span></div>
+            <div class="driver"><span class="driver-name">Fed expectations</span><span class="driver-bias thesis-neutral">NEUTRAL</span></div>
+            <div class="driver"><span class="driver-name">Geopolitics</span><span class="driver-bias thesis-neutral">NEUTRAL</span></div>
+            <div class="driver"><span class="driver-name">Central-bank demand</span><span class="driver-bias thesis-neutral">BULLISH</span></div>
+            <div class="driver"><span class="driver-name">Crude oil</span><span class="driver-bias thesis-neutral">NEUTRAL</span></div>
+        </div>
+    </div>
+
+    <div class="thesis-section">
+        <div class="thesis-section-title">TRADING PLAN</div>
+        <div class="thesis-plan" id="thesisPlan">
+            Preferred: WAIT FOR CONFIRMATION<br>
+            Invalidation: Thesis changes with USD / yields or Fed repricing<br>
+            Catalyst: High-impact macro or geopolitical headline
+        </div>
+    </div>
+
+    <div class="thesis-section">
+        <div class="thesis-section-title">THESIS HISTORY</div>
+        <div class="thesis-history" id="thesisHistory">
+            <div class="thesis-history-row">
+                <span>Waiting for first live update...</span>
+                <strong>--</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="thesis-source">
+        LAST UPDATED: <span id="thesisUpdated">--:-- IST</span>
+        · Headline-based heuristic
+    </div>
+
+</section>
 
     <!-- NEWS -->
 
@@ -1990,6 +2207,325 @@ function renderWire(items){
 }
 
 
+
+/* ==========================================================
+   XAUUSD GOLD THESIS ENGINE
+   ========================================================== */
+
+const thesisHistory = [];
+
+function getThesisSignal(items){
+
+    let goldScore = 0;
+
+    let drivers = {
+        usd: 0,
+        fed: 0,
+        geopolitics: 0,
+        crude: 0,
+        centralBank: 1
+    };
+
+    let catalyst = "High-impact macro or geopolitical headline";
+
+    (items || []).forEach(item => {
+
+        const t = String(
+            item.title || item.headline || ""
+        ).toLowerCase();
+
+        /* USD / YIELDS — generally bearish for gold */
+        if(
+            t.includes("dollar") ||
+            t.includes("usd") ||
+            t.includes("treasury") ||
+            t.includes("yield")
+        ){
+            if(
+                t.includes("rise") ||
+                t.includes("higher") ||
+                t.includes("strong") ||
+                t.includes("surge") ||
+                t.includes("hawkish")
+            ){
+                goldScore -= 3;
+                drivers.usd -= 2;
+            }
+
+            if(
+                t.includes("fall") ||
+                t.includes("lower") ||
+                t.includes("weak") ||
+                t.includes("dovish")
+            ){
+                goldScore += 3;
+                drivers.usd += 2;
+            }
+        }
+
+        /* FED — hawkish bearish, dovish bullish */
+        if(
+            t.includes("fed") ||
+            t.includes("federal reserve") ||
+            t.includes("rate hike") ||
+            t.includes("rate cut") ||
+            t.includes("interest rate")
+        ){
+            catalyst = "FOMC / Fed repricing";
+
+            if(
+                t.includes("hike") ||
+                t.includes("hawkish") ||
+                t.includes("higher for longer")
+            ){
+                goldScore -= 4;
+                drivers.fed -= 3;
+            }
+
+            if(
+                t.includes("cut") ||
+                t.includes("dovish") ||
+                t.includes("easing")
+            ){
+                goldScore += 4;
+                drivers.fed += 3;
+            }
+        }
+
+        /* GEOPOLITICS — safe haven bullish */
+        if(
+            t.includes("war") ||
+            t.includes("attack") ||
+            t.includes("missile") ||
+            t.includes("airstrike") ||
+            t.includes("iran") ||
+            t.includes("israel") ||
+            t.includes("russia") ||
+            t.includes("ukraine") ||
+            t.includes("escalat") ||
+            t.includes("hormuz")
+        ){
+            goldScore += 4;
+            drivers.geopolitics += 3;
+            catalyst = "Geopolitical headline";
+        }
+
+        /* DE-ESCALATION — reduces safe-haven demand */
+        if(
+            t.includes("ceasefire") ||
+            t.includes("peace deal") ||
+            t.includes("de-escalat")
+        ){
+            goldScore -= 3;
+            drivers.geopolitics -= 2;
+        }
+
+        /* CRUDE — high oil can create inflation/yield pressure */
+        if(
+            t.includes("oil") ||
+            t.includes("crude") ||
+            t.includes("brent") ||
+            t.includes("wti") ||
+            t.includes("opec")
+        ){
+            if(
+                t.includes("surge") ||
+                t.includes("jump") ||
+                t.includes("higher") ||
+                t.includes("supply disruption") ||
+                t.includes("production cut")
+            ){
+                goldScore -= 2;
+                drivers.crude -= 2;
+            }
+
+            if(
+                t.includes("fall") ||
+                t.includes("lower") ||
+                t.includes("drop") ||
+                t.includes("supply increase")
+            ){
+                goldScore += 1;
+                drivers.crude += 1;
+            }
+        }
+
+    });
+
+    let bias = "NEUTRAL";
+
+    if(goldScore >= 3) bias = "BULLISH";
+    if(goldScore <= -3) bias = "BEARISH";
+
+    const confidence = Math.min(
+        95,
+        50 + Math.abs(goldScore) * 5
+    );
+
+    return {
+        bias,
+        confidence,
+        drivers,
+        catalyst
+    };
+}
+
+function driverLabel(score){
+
+    if(score >= 2) return "BULLISH";
+    if(score <= -2) return "BEARISH";
+    return "NEUTRAL";
+}
+
+function driverClass(label){
+
+    if(label === "BULLISH") return "thesis-bullish";
+    if(label === "BEARISH") return "thesis-bearish";
+    return "thesis-neutral";
+}
+
+function updateGoldThesis(items){
+
+    const signal = getThesisSignal(items);
+
+    const now = new Date();
+
+    const date = new Intl.DateTimeFormat(
+        "en-IN",
+        {
+            timeZone:"Asia/Kolkata",
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    ).format(now);
+
+    const time = new Intl.DateTimeFormat(
+        "en-IN",
+        {
+            timeZone:"Asia/Kolkata",
+            hour:"2-digit",
+            minute:"2-digit",
+            hour12:false
+        }
+    ).format(now);
+
+    const biasIcon =
+        signal.bias === "BULLISH"
+        ? "🟢"
+        : signal.bias === "BEARISH"
+        ? "🔴"
+        : "⚪";
+
+    const biasClass =
+        signal.bias === "BULLISH"
+        ? "thesis-bullish"
+        : signal.bias === "BEARISH"
+        ? "thesis-bearish"
+        : "thesis-neutral";
+
+    document.getElementById("thesisDate").textContent =
+        date.toUpperCase();
+
+    const biasEl = document.getElementById("thesisBias");
+
+    biasEl.textContent =
+        `${biasIcon} ${signal.bias}`;
+
+    biasEl.className =
+        `thesis-value ${biasClass}`;
+
+    document.getElementById("thesisConfidence").textContent =
+        `${signal.confidence}%`;
+
+    let thesisText =
+        "Gold is currently balanced between macro pressure and safe-haven demand.";
+
+    if(signal.bias === "BEARISH"){
+        thesisText =
+            "USD / yield pressure and hawkish Fed repricing are weighing on gold. Geopolitical risk remains a potential safe-haven catalyst.";
+    }
+
+    if(signal.bias === "BULLISH"){
+        thesisText =
+            "Safe-haven demand and softer USD / Fed expectations are supporting gold. Macro headline risk can increase volatility.";
+    }
+
+    document.getElementById("thesisText").textContent =
+        thesisText;
+
+    const driverData = [
+        ["USD / Yields", signal.drivers.usd],
+        ["Fed expectations", signal.drivers.fed],
+        ["Geopolitics", signal.drivers.geopolitics],
+        ["Central-bank demand", signal.drivers.centralBank],
+        ["Crude oil", signal.drivers.crude]
+    ];
+
+    document.getElementById("thesisDrivers").innerHTML =
+        driverData.map(([name, score]) => {
+
+            const label = driverLabel(score);
+
+            return `
+                <div class="driver">
+                    <span class="driver-name">
+                        ${escapeHTML(name)}
+                    </span>
+                    <span class="driver-bias ${driverClass(label)}">
+                        ${label}
+                    </span>
+                </div>
+            `;
+
+        }).join("");
+
+    let preferred =
+        signal.bias === "BEARISH"
+        ? "SELL RALLIES"
+        : signal.bias === "BULLISH"
+        ? "BUY DIPS"
+        : "WAIT FOR CONFIRMATION";
+
+    document.getElementById("thesisPlan").innerHTML = `
+        Preferred: <strong>${preferred}</strong><br>
+        Invalidation: USD / yields reverse or Fed repricing changes<br>
+        Catalyst: ${escapeHTML(signal.catalyst)}
+    `;
+
+    thesisHistory.unshift({
+        time,
+        bias:signal.bias,
+        confidence:signal.confidence
+    });
+
+    /* Keep only latest 5 thesis states */
+    thesisHistory.splice(5);
+
+    document.getElementById("thesisHistory").innerHTML =
+        thesisHistory.map(row => {
+
+            const icon =
+                row.bias === "BULLISH"
+                ? "🟢"
+                : row.bias === "BEARISH"
+                ? "🔴"
+                : "⚪";
+
+            return `
+                <div class="thesis-history-row">
+                    <span>${escapeHTML(row.time)} IST</span>
+                    <strong>${icon} ${row.bias} ${row.confidence}%</strong>
+                </div>
+            `;
+
+        }).join("");
+
+    document.getElementById("thesisUpdated").textContent =
+        `${time} IST`;
+}
+
+
 /* ==========================================================
    FETCH LIVE NEWS
 ========================================================== */
@@ -2078,6 +2614,12 @@ window.fetchLiveWire = async function fetchLiveWire(){
 
         }
 
+
+        /* =========================================
+           UPDATE XAUUSD THESIS
+        ========================================= */
+
+        updateGoldThesis(rawItems);
 
         /* =========================================
            SCORE NEWS
