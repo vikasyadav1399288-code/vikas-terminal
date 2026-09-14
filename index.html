@@ -2214,7 +2214,7 @@ function renderWire(items){
 
 const thesisHistory = [];
 
-function getThesisSignal(items){
+function getThesisSignal(items, fedData = null){
 
     let goldScore = 0;
 
@@ -2225,6 +2225,12 @@ function getThesisSignal(items){
         crude: 0,
         centralBank: 1
     };
+
+   const fedRate = Number(fedData?.latest?.value || 0);
+
+if(fedRate > 0){
+    drivers.fedRate = fedRate;
+}
 
     let catalyst = "High-impact macro or geopolitical headline";
 
@@ -2567,6 +2573,14 @@ window.fetchLiveWire = async function fetchLiveWire(){
 
             );
 
+       const fedResponse = await fetch("/api/fed", {
+    cache: "no-store"
+});
+
+const fedData = fedResponse.ok
+    ? await fedResponse.json()
+    : null;
+
 
         if(!response.ok){
 
@@ -2619,7 +2633,7 @@ window.fetchLiveWire = async function fetchLiveWire(){
            UPDATE XAUUSD THESIS
         ========================================= */
 
-        updateGoldThesis(rawItems);
+        updateGoldThesis(rawItems, fedData);
 
         /* =========================================
            SCORE NEWS
