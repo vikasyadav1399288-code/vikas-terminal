@@ -9,7 +9,7 @@ import os
 
 
 PORT = 8000
-FRED_API_KEY = os.getenv("FRED_API_KEY")
+FRED_API_KEY = os.getenv("FRED_API_KEY", "").strip()
 
 FEEDS = [
     {
@@ -185,7 +185,7 @@ class Handler(SimpleHTTPRequestHandler):
                     "https://api.stlouisfed.org/fred/series/observations"
                     "?series_id=DFF"
                     "&file_type=json"
-                    "&api_key=" + FRED_API_KEY
+                    "&api_key=" + FRED_API_KEY.strip()
                 )
 
                 request = Request(
