@@ -2559,19 +2559,21 @@ window.fetchLiveWire = async function fetchLiveWire(){
         `;
 
 
-        const response =
+        const controller = new AbortController();
 
-            await fetch(
+const timeout = setTimeout(() => {
+    controller.abort();
+}, 30000);
 
-                API_URL,
+const response = await fetch(
+    API_URL,
+    {
+        cache: "no-store",
+        signal: controller.signal
+    }
+);
 
-                {
-
-                    cache:"no-store"
-
-                }
-
-            );
+clearTimeout(timeout);
 
        const fedResponse = await fetch("/api/fed", {
     cache: "no-store"
