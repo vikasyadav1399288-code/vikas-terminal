@@ -2895,29 +2895,13 @@ updateClock();
 
 const AUTO_REFRESH_MS = 120000;
 
-let autoRefreshTimer = null;
+setInterval(function(){
 
-function startAutoRefresh(){
+    console.log("[AUTO] 2-minute refresh started");
 
-    if(autoRefreshTimer){
-        clearTimeout(autoRefreshTimer);
-    }
+    window.fetchLiveWire();
 
-    autoRefreshTimer = setTimeout(async function(){
-
-        console.log("[AUTO] 2-minute refresh started");
-
-        try{
-            await window.fetchLiveWire();
-        }
-        catch(error){
-            console.error("[AUTO] Refresh error:", error);
-        }
-
-        startAutoRefresh();
-
-    }, AUTO_REFRESH_MS);
-}
+}, AUTO_REFRESH_MS);
 
 
 /* ==========================================================
@@ -2928,11 +2912,10 @@ document.addEventListener("visibilitychange", function(){
 
     if(!document.hidden){
 
-        console.log("[AUTO] Tab active — refreshing now");
+        console.log("[AUTO] Tab active - refreshing now");
 
         window.fetchLiveWire();
 
-        startAutoRefresh();
     }
 
 });
