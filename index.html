@@ -927,6 +927,10 @@ body{
             <div class="thesis-label">CONFIDENCE</div>
             <div class="thesis-value" id="thesisConfidence">50%</div>
         </div>
+       <div class="thesis-stat">
+    <div class="thesis-label">FED RATE (DFF)</div>
+    <div class="thesis-value thesis-neutral" id="fedRateDisplay">--%</div>
+</div>
     </div>
 
     <div class="thesis-section">
@@ -2443,6 +2447,19 @@ function updateGoldThesis(items, fedData = null){
 
     document.getElementById("thesisConfidence").textContent =
         `${signal.confidence}%`;
+   const fedRateDisplay =
+    document.getElementById("fedRateDisplay");
+
+if(fedRateDisplay){
+
+    const fedRate =
+        Number(fedData?.latest?.value || 0);
+
+    fedRateDisplay.textContent =
+        fedRate > 0
+        ? `${fedRate.toFixed(2)}%`
+        : "--%";
+}
 
     let thesisText =
         "Gold is currently balanced between macro pressure and safe-haven demand.";
